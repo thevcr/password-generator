@@ -4,11 +4,13 @@ var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 var lowercaseChar = "abcdefghijklmnopqrstuvwxyz".split("");
 var numericChar = "1234567890".split("");
 
-var finalPassword = "";
+var password = "";
+var selectedCharOptionsArray = [];
 var generatePassword = function() {
   
   // Prompt user for password length
   var passwordLength = window.prompt("What is your desired password length? Enter a value between 8 and 128.");
+
   if (passwordLength >= 8 && passwordLength <= 128) {
   
     // Prompt user for all available options and have them confirm what values they want in their password
@@ -19,31 +21,29 @@ var generatePassword = function() {
 
       // Add characters based on values user has chosen
       if (confirmSpecialChar) {
-        finalPassword = finalPassword.concat(specialChar);
-        console.log(finalPassword);
+        selectedCharOptionsArray = selectedCharOptionsArray.concat(specialChar);
       } if (confirmUppercaseChar) {
-        finalPassword = finalPassword.concat(uppercaseChar);
-        console.log(finalPassword)
+        selectedCharOptionsArray = selectedCharOptionsArray.concat(uppercaseChar);
       } if (confirmLowercaseChar) {
-        finalPassword = finalPassword.concat(lowercaseChar);
-        console.log(finalPassword)
+        selectedCharOptionsArray = selectedCharOptionsArray.concat(lowercaseChar);
       } if (confirmNumericChar) {
-        finalPassword = pasfinalPassword.concat(numericChar);
-        console.log(finalPassword)
+        selectedCharOptionsArray = selectedCharOptionsArray.concat(numericChar);
       } if (!confirmSpecialChar && !confirmUppercaseChar && !confirmLowercaseChar && !confirmNumericChar) {
         window.alert("Must select at least one character option")
         return writePassword();
       }
-      // for (var i = 0; i < passwordLength.length; i++) {
-      //   password += []
-      // }
+      for (var i = 0; i < passwordLength; i++) {
+        var randomNumber = Math.floor(Math.random() * passwordLength);
+         password += selectedCharOptionsArray[randomNumber];
+      }
+      return password;
     } else { 
     window.alert("Password length must be between 8 and 128 characters.");
     return writePassword();
   }
 };
 
-var randomNumber = Math.floor(Math.random() * finalPassword.length);
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
