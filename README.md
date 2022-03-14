@@ -13,3 +13,5 @@ This is a password generator web application built with HTML, CSS, and JavaScrip
 ## Website
 https://thevcr.github.io/password-generator
 
+## Credits
+Starter Code written by Xandromus here: https://github.com/coding-boot-camp/friendly-parakeet
